@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 
-THEME='poly-dark'
+VENDOR='RobLoach'
+THEME='ubuntu-mate'
 LANG='English'
 
 # Pre-authorise sudo
@@ -53,7 +54,7 @@ if [ -e /etc/os-release ]; then
 
     elif [[ "$ID" =~ (centos|fedora|opensuse) || \
             "$ID_LIKE" =~ (fedora|rhel|suse) ]]; then
-            
+
         GRUB_DIR='grub2'
         UPDATE_GRUB='grub2-mkconfig -o /boot/grub2/grub.cfg'
     fi
@@ -61,7 +62,7 @@ fi
 
 
 echo 'Fetching theme archive'
-wget https://github.com/shvchk/${THEME}/archive/master.zip
+wget https://github.com/${VENDOR}/${THEME}/archive/master.zip
 
 echo 'Unpacking theme'
 unzip master.zip
