@@ -2,9 +2,7 @@
 
 Supported languages: Chinese (simplified), English, French, German, Norwegian, Portuguese, Russian, Spanish, Ukrainian
 
-![](https://i.imgur.com/OHGyR2N.gif)
-
-Screenshot is intentionally low res to fit GitHub UI. See also: [1280×720](https://i.imgur.com/iKtkLr4.png), [1920×1080](https://i.imgur.com/faGEmp5.png)
+![Ubuntu MATE GRUB Theme Screenshot](screenshot.png)
 
 ---
 
