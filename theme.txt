@@ -29,7 +29,7 @@ terminal-border: "0"
 + progress_bar {
   id = "__timeout__"
   left = 0
-  top = 100%-3
+  top = 0
   height = 3
   width = 100%
   show_text = false
