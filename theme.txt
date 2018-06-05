@@ -25,33 +25,17 @@ terminal-border: "0"
   selected_item_pixmap_style = "selected_item_*.png"
 }
 
-# Countdown message
-+ label {
-  left = 0
-  top = 100%-48
-  width = 100%
-  align = "center"
+# Progress bar
++ progress_bar {
   id = "__timeout__"
-  # DE
-  # text = "Start in %d Sekunden."
-  # EN
-  text = "Booting in %d seconds"
-  # ES
-  # text = "Arranque en% d segundos"
-  # FR
-  # text = "Démarrage automatique dans %d secondes"
-  # NO
-  # text = "Starter om %d sekunder"
-  # PT
-  # text = "Arranque automático dentro de %d segundos"
-  # RU
-  # text = "Загрузка выбранного пункта через %d сек."
-  # UA
-  # text = "Автоматичне завантаження розпочнеться через %d сек."
-  # zh_CN
-  # text = "在 %d 内启动"
-  color = "#ffffff"
-  font = "DejaVu Sans Regular 14"
+  left = 0
+  top = 100%-3
+  height = 3
+  width = 100%
+  show_text = false
+
+  bar_style = "progress_bar_*.png"
+  highlight_style = "progress_bar_hl_*.png"
 }
 
 # Navigation keys hint 
