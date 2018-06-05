@@ -17,7 +17,7 @@ terminal-border: "0"
   width = 70%
   height = 60%
   item_font = "Unifont Regular 18"
-  item_color = "#bbbbbb"
+  item_color = "#999999"
   selected_item_color = "#ffffff"
   item_height = 40
   item_spacing = 0
