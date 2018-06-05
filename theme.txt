@@ -17,7 +17,7 @@ terminal-border: "0"
   width = 70%
   height = 60%
   item_font = "DejaVu Sans Regular 16"
-  item_color = "#999999"
+  item_color = "#aaaaaa"
   selected_item_color = "#ffffff"
   item_height = 40
   item_spacing = 0
