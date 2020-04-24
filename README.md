@@ -21,5 +21,6 @@ Supported languages: Chinese (simplified), English, French, German, Norwegian, P
 
 ### See also
 
+- [GRUB Customizer](https://launchpad.net/grub-customizer) if you want to change GRUB settings through a GUI
 - [Poly light GRUB theme](https://github.com/shvchk/poly-light)
 - [Fallout GRUB theme](https://github.com/shvchk/fallout-grub-theme)
