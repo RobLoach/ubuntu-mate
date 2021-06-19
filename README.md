@@ -1,6 +1,6 @@
 ## Ubuntu MATE GRUB theme
 
-Supported languages: Chinese (simplified), English, French, German, Norwegian, Portuguese, Russian, Spanish, Ukrainian
+Supported languages: English, Chinese (simplified), French, German, Norwegian, Portuguese, Russian, Spanish, Ukrainian
 
 ![Ubuntu MATE GRUB Theme Screenshot](screenshot.png)
 
