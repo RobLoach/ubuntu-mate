@@ -1,9 +1,8 @@
 ## Ubuntu MATE GRUB theme
 
-Supported languages: English, Chinese (simplified), French, German, Norwegian, Portuguese, Russian, Spanish, Ukrainian
+Supported languages: Chinese (simplified), English, French, German, Italian, Norwegian, Portuguese, Russian, Spanish, Ukrainian
 
 ![Ubuntu MATE GRUB Theme Screenshot](screenshot.png)
-
 ---
 
 ### Installation / update
@@ -23,4 +22,5 @@ Supported languages: English, Chinese (simplified), French, German, Norwegian, P
 
 - [GRUB Customizer](https://launchpad.net/grub-customizer) if you want to change GRUB settings through a GUI
 - [Poly light GRUB theme](https://github.com/shvchk/poly-light)
+- [Poly dark GRUB theme](https://github.com/shvchk/poly-dark)
 - [Fallout GRUB theme](https://github.com/shvchk/fallout-grub-theme)

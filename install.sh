@@ -4,6 +4,9 @@ VENDOR='RobLoach'
 THEME='ubuntu-mate'
 LANG='English'
 
+# Change to temporary directory
+cd $(mktemp -d)
+
 # Pre-authorise sudo
 sudo echo
 
@@ -13,6 +16,7 @@ declare -A LANGS=(
     [English]=EN
     [French]=FR
     [German]=DE
+    [Italian]=IT
     [Norwegian]=NO
     [Portuguese]=PT
     [Russian]=RU
@@ -25,8 +29,7 @@ LANG_NAMES=($(echo ${!LANGS[*]} | tr ' ' '\n' | sort -n))
 PS3='Please select language #: '
 select l in "${LANG_NAMES[@]}"
 do
-    if [[ -v LANGS[$l] ]]
-    then
+    if [[ -v LANGS[$l] ]]; then
         LANG=$l
         break
     else
@@ -37,8 +40,15 @@ done < /dev/tty
 # Detect distro and set GRUB location and update method
 GRUB_DIR='grub'
 UPDATE_GRUB=''
+BOOT_MODE='legacy'
 
-if [ -e /etc/os-release ]; then
+if [[ -d /boot/efi && -d /sys/firmware/efi ]]; then
+    BOOT_MODE='UEFI'
+fi
+
+echo "Boot mode: ${BOOT_MODE}"
+
+if [[ -e /etc/os-release ]]; then
 
     source /etc/os-release
 
@@ -56,19 +66,28 @@ if [ -e /etc/os-release ]; then
             "$ID_LIKE" =~ (fedora|rhel|suse) ]]; then
 
         GRUB_DIR='grub2'
-        UPDATE_GRUB='grub2-mkconfig -o /boot/grub2/grub.cfg'
+        GRUB_CFG='/boot/grub2/grub.cfg'
+
+        if [[ "$BOOT_MODE" = "UEFI" ]]; then
+            GRUB_CFG="/boot/efi/EFI/${ID}/grub.cfg"
+        fi
+
+        UPDATE_GRUB="grub2-mkconfig -o ${GRUB_CFG}"
+
+        # BLS etries have 'kernel' class, copy corresponding icon
+        if [[ -d /boot/loader/entries && -e ${THEME}-master/icons/${ID}.png ]]; then
+            cp ${THEME}-master/icons/${ID}.png ${THEME}-master/icons/kernel.png
+        fi
     fi
 fi
-
 
 echo 'Fetching theme archive'
 wget https://github.com/${VENDOR}/${THEME}/archive/master.zip
 
 echo 'Unpacking theme'
-unzip master.zip
+unzip ${THEME}.zip
 
-if [[ "$LANG" != "English" ]]
-then
+if [[ "$LANG" != "English" ]]; then
     echo "Changing language to ${LANG}"
     sed -i -r -e '/^\s+# EN$/{n;s/^(\s*)/\1# /}' \
               -e '/^\s+# '"${LANGS[$LANG]}"'$/{n;s/^(\s*)#\s*/\1/}' ${THEME}-master/theme.txt
@@ -83,6 +102,9 @@ sudo cp -r ${THEME}-master/* /boot/${GRUB_DIR}/themes/${THEME}
 echo 'Removing other themes from GRUB config'
 sudo sed -i '/^GRUB_THEME=/d' /etc/default/grub
 
+echo 'Making sure GRUB uses graphical output'
+sudo sed -i 's/^\(GRUB_TERMINAL\w*=.*\)/#\1/' /etc/default/grub
+
 echo 'Removing empty lines at the end of GRUB config' # optional
 sudo sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba' /etc/default/grub
 
@@ -93,7 +115,7 @@ echo 'Adding theme to GRUB config'
 echo "GRUB_THEME=/boot/${GRUB_DIR}/themes/${THEME}/theme.txt" | sudo tee -a /etc/default/grub
 
 echo 'Removing theme installation files'
-rm -rf master.zip ${THEME}-master
+rm -rf ${THEME}.zip ${THEME}-master
 
 echo 'Updating GRUB'
 if [[ $UPDATE_GRUB ]]; then
