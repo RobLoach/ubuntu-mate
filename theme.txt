@@ -50,11 +50,7 @@ terminal-border: "0"
   # EN
   text = "Booting in %d seconds"
   # ES
-<<<<<<< HEAD
-  # text = "Arranque en% d segundos"
-=======
   # text = "Arranque en %d segundos"
->>>>>>> 38f27b05136bed4556adccfeb4241a3f38174e68
   # FR
   # text = "Démarrage automatique dans %d secondes"
   # IT
