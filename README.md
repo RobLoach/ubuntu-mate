@@ -24,3 +24,10 @@ Supported languages: Chinese (simplified), English, French, German, Italian, Nor
 - [Poly light GRUB theme](https://github.com/shvchk/poly-light)
 - [Poly dark GRUB theme](https://github.com/shvchk/poly-dark)
 - [Fallout GRUB theme](https://github.com/shvchk/fallout-grub-theme)
+
+### Development
+
+This is built from [poly-light](https://github.com/shvchk/poly-light), to update it...
+```
+git pull https://github.com/shvchk/poly-light.git master
+```
